@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TestProject</string>
+    <string name="title_activity_main_navigation">MainNavigationActivity</string>
+    <string name="title_search">Search</string>
+    <string name="title_favourite">Favourite</string>
+
+</resources>
