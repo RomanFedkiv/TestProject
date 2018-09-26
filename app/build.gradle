@@ -46,6 +46,7 @@ def gsonVersion = '2.8.5'
 def javaxAnnotationVersion = '1.0'
 def picassoVersion = '2.71828'
 def jsoupVersion = '1.8.3'
+def pdfVersion = '1.0.5'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -78,4 +79,7 @@ dependencies {
     implementation "com.squareup.retrofit2:adapter-rxjava2:${retrofitAdapterVersion}"
     implementation "com.squareup.picasso:picasso:${picassoVersion}"
     implementation "org.jsoup:jsoup:${jsoupVersion}"
+    implementation "es.voghdev.pdfviewpager:library:${pdfVersion}"
+
+
 }

@@ -7,7 +7,7 @@ import kotlinx.android.synthetic.main.favourite_person_item.view.*
 
 class FavouritePersonHolder(
         private val view: View,
-        private val clickListener: (PersonInfo) -> Unit
+        private val clickListener: (PersonInfo,String) -> Unit
 ) : RecyclerView.ViewHolder(view) {
 
     fun bind(personInfo: PersonInfo): Unit = with(itemView) {
@@ -15,7 +15,10 @@ class FavouritePersonHolder(
         place_of_work.text = personInfo.placeOfWork
         comment.text = personInfo.comment
         favourite_button.setOnClickListener{
-            clickListener(personInfo)
+            clickListener(personInfo, "favourite_button")
+        }
+        pdf_button.setOnClickListener{
+            clickListener(personInfo, "pdf_button")
         }
     }
 }

@@ -7,7 +7,7 @@ import com.example.roman.testproject.R
 import com.example.roman.testproject.data.model.PersonInfo
 
 class FavouritePersonAdapter (
-        private val clickListener: (PersonInfo) -> Unit
+        private val clickListener: (PersonInfo, String) -> Unit
 ) : RecyclerView.Adapter<FavouritePersonHolder>(){
 
     private var listNews : List<PersonInfo> = listOf()

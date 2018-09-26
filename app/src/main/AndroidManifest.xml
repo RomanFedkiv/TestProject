@@ -22,6 +22,7 @@
         </activity>
         <activity android:name=".ui.FavouritePersonActivity"></activity>
 
+        <activity android:name=".ui.PdfReaderActivity"></activity>
         <receiver
             android:name=".ui.ConnectivityReceiver"
             android:enabled="true">

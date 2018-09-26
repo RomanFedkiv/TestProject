@@ -1,5 +1,6 @@
 package com.example.roman.testproject.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
@@ -38,21 +39,25 @@ class FavouritePersonActivity : BaseActivity(), FavouritePersonContract.View {
 
     fun initView(){
         favourite_list.layoutManager = LinearLayoutManager(this)
-        favourite_list.adapter = FavouritePersonAdapter{
-            presenter.deleteFromFavourite(it.id!!)
+        favourite_list.adapter = FavouritePersonAdapter{ personInfo: PersonInfo, s: String ->
+            if (s.equals("favourite_button")) {
+                presenter.deleteFromFavourite(personInfo.id!!)
+            }
+            if (s.equals("pdf_button")) {
+                val intent = Intent(this, PdfReaderActivity::class.java)
+                intent.putExtra("key",personInfo.linkPDF)
+                startActivity(intent)
+            }
         }
     }
 
     override fun showFavouritePerson(list: List<PersonInfo>) {
         if (list.isEmpty()) empty_text_view.visibility = View.VISIBLE
-        else {
-            empty_text_view.visibility = View.INVISIBLE
-            (favourite_list.adapter as FavouritePersonAdapter).updateList(list)
-        }
+                       else empty_text_view.visibility = View.INVISIBLE
+        (favourite_list.adapter as FavouritePersonAdapter).updateList(list)
     }
 
     override fun sucessDelete() {
-
         Toast.makeText(this,"Person delete", Toast.LENGTH_SHORT).show()
     }
 

@@ -9,7 +9,7 @@ import com.example.roman.testproject.data.model.PersonInfo
 
 
 class PersonAdapter(
-        private val clickListener: (PersonInfo) -> Unit
+        private val clickListener: (PersonInfo,String) -> Unit
 ) : RecyclerView.Adapter<PersonHolder>(){
 
     private var listNews : List<PersonInfo> = listOf()
@@ -31,6 +31,4 @@ class PersonAdapter(
     override fun onBindViewHolder(holder: PersonHolder, position: Int) {
         holder.bind(listNews[position])
     }
-
-
 }
