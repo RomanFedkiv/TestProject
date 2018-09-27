@@ -8,6 +8,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.widget.Toast
 import com.example.roman.testproject.R
 import com.example.roman.testproject.data.model.PersonInfo
@@ -43,8 +44,7 @@ class SearchPersonActivity : SearchPersonContract.View, BaseActivity() {
         result_list.layoutManager = LinearLayoutManager(this)
         result_list.adapter = PersonAdapter { personInfo: PersonInfo, s: String ->
             if (s.equals(Config.FAVOURITE_BUTTON_PRESSED)) {
-                showCreateCategoryDialog()
-                presenter.addToFavourite(personInfo)
+                showCreateCategoryDialog(personInfo)
             }
             if (s.equals(Config.FAVOURITE_BUTTON_DEFAULT)){
                 presenter.deleteFromFavourite(personInfo.id!!)
@@ -57,11 +57,17 @@ class SearchPersonActivity : SearchPersonContract.View, BaseActivity() {
         }
     }
 
-    fun showCreateCategoryDialog() {
+    fun showCreateCategoryDialog(personInfo: PersonInfo) {
         val builder = AlertDialog.Builder(this@SearchPersonActivity)
-        builder.setView(R.layout.dialog_comment)
+        val input = EditText(this)
+        builder.setTitle("Add comment for this Person")
+        builder.setView(input)
         builder.setPositiveButton("OK"){ dialogInterface: DialogInterface, i: Int ->
-
+            personInfo.comment = input.text.toString()
+            presenter.addToFavourite(personInfo)
+        }
+        builder.setNegativeButton("Cancel"){ dialogInterface: DialogInterface, i: Int ->
+            dialogInterface.dismiss()
         }
         val dialog: AlertDialog = builder.create()
         dialog.show()
