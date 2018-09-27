@@ -13,10 +13,14 @@ interface FavouritePersonContract {
         fun showError()
 
         fun sucessDelete()
+
+        fun sucessUpdate()
     }
 
     interface Presenter : BasePresenter {
 
         fun deleteFromFavourite(id : String)
+
+        fun changeComment(personInfo: PersonInfo)
     }
 }

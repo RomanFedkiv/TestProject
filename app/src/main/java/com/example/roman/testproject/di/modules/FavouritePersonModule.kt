@@ -1,10 +1,7 @@
 package com.example.roman.testproject.di.modules
 
 import com.example.roman.testproject.di.scopes.PerActivity
-import com.example.roman.testproject.domain.interactor.AddToFavouriteUseCase
-import com.example.roman.testproject.domain.interactor.DeleteFromFavouriteUseCase
-import com.example.roman.testproject.domain.interactor.GetFavouritePersonUseCase
-import com.example.roman.testproject.domain.interactor.GetPersonInfoUseCase
+import com.example.roman.testproject.domain.interactor.*
 import com.example.roman.testproject.presentation.favourite_person.FavouritePersonContract
 import com.example.roman.testproject.presentation.favourite_person.FavouritePersonPresenter
 import com.example.roman.testproject.presentation.search_person.SearchPersonContract
@@ -25,6 +22,7 @@ class FavouritePersonModule {
     @PerActivity
     fun providePresenter(view: FavouritePersonContract.View,
                          getFavouritePersonUseCase: GetFavouritePersonUseCase,
-                            deleteFromFavouriteUseCase: DeleteFromFavouriteUseCase) =
-            FavouritePersonPresenter(view, getFavouritePersonUseCase,deleteFromFavouriteUseCase) as FavouritePersonContract.Presenter
+                         deleteFromFavouriteUseCase: DeleteFromFavouriteUseCase,
+                         updatePersonUseCase: UpdatePersonUseCase) =
+            FavouritePersonPresenter(view, getFavouritePersonUseCase,deleteFromFavouriteUseCase,updatePersonUseCase) as FavouritePersonContract.Presenter
 }

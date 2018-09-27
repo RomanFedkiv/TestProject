@@ -22,4 +22,6 @@ class PersonInfoRepositoryImpl @Inject constructor(
     override fun getFavouritePerson() = cache.getPersonsInfo()
 
     override fun deleteFromFavourite(id: String) = cache.deleteById(id)
+
+    override fun updatePersonByComment(comment: String, id: String) = cache.updatePersonById(comment,id)
 }

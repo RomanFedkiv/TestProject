@@ -8,7 +8,7 @@
     <TextView
         android:id="@+id/first_name"
         android:layout_width="0dp"
-        android:layout_height="19dp"
+        android:layout_height="20dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
@@ -22,15 +22,19 @@
         android:id="@+id/pdf_button"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
         android:background="@android:color/background_light"
-        app:srcCompat="@drawable/ic_book_black_24dp"
-        tools:layout_editor_absoluteX="336dp"
-        tools:layout_editor_absoluteY="18dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_book_black_24dp" />
 
     <TextView
         android:id="@+id/place_of_work"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="20dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
@@ -46,24 +50,33 @@
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:background="@android:color/background_light"
+        android:background="@drawable/button_style"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_star_border_black_24dp" />
+        app:srcCompat="@drawable/ic_star_black_24dp" />
 
-    <TextView
+    <EditText
         android:id="@+id/comment"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
-        android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/pdf_button"
         app:layout_constraintStart_toEndOf="@+id/favourite_button"
         app:layout_constraintTop_toBottomOf="@+id/place_of_work" />
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="wrap_content"
+        android:layout_height="2dp"
+        android:layout_marginTop="4dp"
+        android:background="#d9d9d9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/comment" />
 
 </android.support.constraint.ConstraintLayout>

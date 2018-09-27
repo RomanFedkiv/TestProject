@@ -18,6 +18,8 @@ interface SearchPersonContract {
 
         fun hideLoading()
 
+        fun sucessDelete()
+
     }
 
     interface Presenter : BasePresenter {
@@ -25,5 +27,7 @@ interface SearchPersonContract {
         fun initSearch(query : String)
 
         fun addToFavourite(personInfo: PersonInfo)
+
+        fun deleteFromFavourite(id : String)
     }
 }

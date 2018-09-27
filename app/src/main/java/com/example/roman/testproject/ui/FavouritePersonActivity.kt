@@ -14,24 +14,16 @@ import com.example.roman.testproject.ui.adapter.FavouritePersonAdapter
 import com.example.roman.testproject.ui.adapter.PersonAdapter
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_favourite_person.*
+import kotlinx.android.synthetic.main.dialog_comment.*
 import javax.inject.Inject
 
 class FavouritePersonActivity : BaseActivity(), FavouritePersonContract.View {
-
-    override fun getContentViewId(): Int {
-        return R.layout.activity_favourite_person
-    }
-
-    override fun getNavigationMenuItemId(): Int {
-        return R.id.navigation_favourite
-    }
 
     @Inject
     override lateinit var presenter: FavouritePersonContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_favourite_person)
         AndroidInjection.inject(this)
         initView()
         presenter.start()
@@ -48,7 +40,18 @@ class FavouritePersonActivity : BaseActivity(), FavouritePersonContract.View {
                 intent.putExtra("key",personInfo.linkPDF)
                 startActivity(intent)
             }
+            if (s.equals("comment")) {
+                presenter.changeComment(personInfo)
+            }
         }
+    }
+
+    override fun getContentViewId(): Int {
+        return R.layout.activity_favourite_person
+    }
+
+    override fun getNavigationMenuItemId(): Int {
+        return R.id.navigation_favourite
     }
 
     override fun showFavouritePerson(list: List<PersonInfo>) {
@@ -59,6 +62,10 @@ class FavouritePersonActivity : BaseActivity(), FavouritePersonContract.View {
 
     override fun sucessDelete() {
         Toast.makeText(this,"Person delete", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun sucessUpdate() {
+        Toast.makeText(this,"Comment changed", Toast.LENGTH_SHORT).show()
     }
 
     override fun showError() {

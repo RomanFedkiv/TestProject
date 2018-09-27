@@ -21,6 +21,9 @@ interface PersonInfoDao {
     @Query("DELETE FROM $TABLE_NAME WHERE idPerson = :id")
     fun deleteById(id : String)
 
+    @Query("UPDATE $TABLE_NAME SET comment = :comment WHERE idPerson = :id")
+    fun updateCommentById(comment : String,id : String)
+
     @Query("SELECT * FROM $TABLE_NAME")
     fun getPersonsInfo(): List<PersonInfoCacheEntity>
 }

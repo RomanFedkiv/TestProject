@@ -3,6 +3,7 @@ package com.example.roman.testproject.di.modules
 import com.example.roman.testproject.ui.SearchPersonActivity
 import com.example.roman.testproject.di.scopes.PerActivity
 import com.example.roman.testproject.domain.interactor.AddToFavouriteUseCase
+import com.example.roman.testproject.domain.interactor.DeleteFromFavouriteUseCase
 import com.example.roman.testproject.domain.interactor.GetPersonInfoUseCase
 import com.example.roman.testproject.presentation.search_person.SearchPersonContract
 import com.example.roman.testproject.presentation.search_person.SearchPersonPresenter
@@ -19,6 +20,7 @@ class SearchPersonModule {
     @PerActivity
     fun providePresenter(view: SearchPersonContract.View,
                          getPersonInfoUseCase: GetPersonInfoUseCase,
-                         addToFavouriteUseCase: AddToFavouriteUseCase) =
-            SearchPersonPresenter(view, getPersonInfoUseCase, addToFavouriteUseCase) as SearchPersonContract.Presenter
+                         addToFavouriteUseCase: AddToFavouriteUseCase,
+                         deleteFromFavouriteUseCase: DeleteFromFavouriteUseCase) =
+            SearchPersonPresenter(view, getPersonInfoUseCase, addToFavouriteUseCase,deleteFromFavouriteUseCase) as SearchPersonContract.Presenter
 }

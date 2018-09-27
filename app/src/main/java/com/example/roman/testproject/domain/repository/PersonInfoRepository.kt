@@ -13,4 +13,6 @@ interface PersonInfoRepository {
     fun getFavouritePerson() : Single<List<PersonInfo>>
 
     fun deleteFromFavourite(id : String) : Completable
+
+    fun updatePersonByComment(comment : String, id : String) : Completable
 }

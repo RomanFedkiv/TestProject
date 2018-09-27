@@ -12,13 +12,12 @@ class PersonInfoCacheImpl @Inject constructor(
         private val personInfoDao: PersonInfoDao,
         private val mapper: PersonInfoCacheMapper
 ) : PersonInfoCache {
+    override fun updatePersonById(comment: String, id: String) = completableCall {
+        personInfoDao.updateCommentById(comment,id)
+    }
 
     override fun savePersonInfo(personInfo: PersonInfo) = completableCall{
         personInfoDao.insertPersonInfo(mapper.mapToCache(personInfo))
-    }
-
-    override fun clearPersonInfo() = completableCall {
-        //personInfoDao.deleteByTitle("")
     }
 
     override fun getPersonsInfo(): Single<List<PersonInfo>> = singleCall {

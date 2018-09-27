@@ -8,7 +8,7 @@ interface PersonInfoCache {
 
     fun savePersonInfo(personInfo: PersonInfo): Completable
 
-    fun clearPersonInfo(): Completable
+    fun updatePersonById(comment : String, id: String) : Completable
 
     fun getPersonsInfo(): Single<List<PersonInfo>>
 
