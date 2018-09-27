@@ -47,7 +47,9 @@ class SearchPersonPresenter @Inject constructor(
     }
 
     override fun stop() {
-
+        getPersonInfoUseCase.dispose()
+        addToFavouriteUseCase.dispose()
+        deleteFromFavouriteUseCase.dispose()
     }
 
 }

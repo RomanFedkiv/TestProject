@@ -45,6 +45,8 @@ class FavouritePersonPresenter @Inject constructor(
     }
 
     override fun stop() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        updatePersonUseCase.dispose()
+        getFavouritePersonUseCase.dispose()
+        deleteFromFavouriteUseCase.dispose()
     }
 }
