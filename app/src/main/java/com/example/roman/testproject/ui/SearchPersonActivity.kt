@@ -43,16 +43,14 @@ class SearchPersonActivity : SearchPersonContract.View, BaseActivity() {
         }
         result_list.layoutManager = LinearLayoutManager(this)
         result_list.adapter = PersonAdapter { personInfo: PersonInfo, s: String ->
-            if (s.equals(Config.FAVOURITE_BUTTON_PRESSED)) {
-                showCreateCategoryDialog(personInfo)
-            }
-            if (s.equals(Config.FAVOURITE_BUTTON_DEFAULT)){
-                presenter.deleteFromFavourite(personInfo.id!!)
-            }
-            if (s.equals(Config.PDF_BUTTON_PRESSED)) {
-                val intent = Intent(this, PdfReaderActivity::class.java)
-                intent.putExtra("key",personInfo.linkPDF)
-                startActivity(intent)
+            when (s) {
+                Config.FAVOURITE_BUTTON_PRESSED ->  showCreateCategoryDialog(personInfo)
+                Config.FAVOURITE_BUTTON_DEFAULT -> presenter.deleteFromFavourite(personInfo.id!!)
+                Config.PDF_BUTTON_PRESSED -> {
+                    val intent = Intent(this, PdfReaderActivity::class.java)
+                    intent.putExtra("key",personInfo.linkPDF)
+                    startActivity(intent)
+                }
             }
         }
     }

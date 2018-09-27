@@ -32,16 +32,15 @@ class FavouritePersonActivity : BaseActivity(), FavouritePersonContract.View {
     fun initView(){
         favourite_list.layoutManager = LinearLayoutManager(this)
         favourite_list.adapter = FavouritePersonAdapter{ personInfo: PersonInfo, s: String ->
-            if (s.equals("favourite_button")) {
-                presenter.deleteFromFavourite(personInfo.id!!)
-            }
-            if (s.equals("pdf_button")) {
-                val intent = Intent(this, PdfReaderActivity::class.java)
-                intent.putExtra("key",personInfo.linkPDF)
-                startActivity(intent)
-            }
-            if (s.equals("comment")) {
-                presenter.changeComment(personInfo)
+            when (s)
+            {
+                Config.FAVOURITE_BUTTON_PRESSED -> presenter.deleteFromFavourite(personInfo.id!!)
+                Config.PDF_BUTTON_PRESSED -> {
+                    val intent = Intent(this, PdfReaderActivity::class.java)
+                    intent.putExtra("key",personInfo.linkPDF)
+                    startActivity(intent)
+                }
+                Config.COMMENT -> presenter.changeComment(personInfo)
             }
         }
     }

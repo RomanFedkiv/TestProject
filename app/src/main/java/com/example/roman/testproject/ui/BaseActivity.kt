@@ -9,6 +9,7 @@ import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.MenuItem
+import android.widget.Toast
 import com.example.roman.testproject.R
 
 open abstract class BaseActivity : AppCompatActivity(), ConnectivityReceiver.ConnectivityReceiverListener, BottomNavigationView.OnNavigationItemSelectedListener {
@@ -26,22 +27,11 @@ open abstract class BaseActivity : AppCompatActivity(), ConnectivityReceiver.Con
         navigationView.setOnNavigationItemSelectedListener(this)
     }
 
-
     private fun showMessage(isConnected: Boolean) {
-
-
-
         if (!isConnected) {
-
-            val messageToUser = "You are offline now." //TODO
-            Log.i("internet","offline now")
-            mSnackBar = Snackbar.make(findViewById(R.id.root_layout), messageToUser, Snackbar.LENGTH_LONG) //Assume "rootLayout" as the root layout of every activity.
-            mSnackBar?.duration = Snackbar.LENGTH_INDEFINITE
-            mSnackBar?.show()
-        } else {
-            mSnackBar?.dismiss()
+            val messageToUser = "You are offline now."
+            Toast.makeText(this,"You are offline now", Toast.LENGTH_SHORT).show()
         }
-
     }
 
     override fun onResume() {
@@ -50,9 +40,6 @@ open abstract class BaseActivity : AppCompatActivity(), ConnectivityReceiver.Con
         ConnectivityReceiver.connectivityReceiverListener = this
     }
 
-    /**
-     * Callback will be called when there is change
-     */
     override fun onNetworkConnectionChanged(isConnected: Boolean) {
         showMessage(isConnected)
     }
@@ -62,7 +49,6 @@ open abstract class BaseActivity : AppCompatActivity(), ConnectivityReceiver.Con
         updateNavigationBarState()
     }
 
-    // Remove inter-activity transition to avoid screen tossing on tapping bottom navigation items
     public override fun onPause() {
         super.onPause()
         overridePendingTransition(0, 0)
