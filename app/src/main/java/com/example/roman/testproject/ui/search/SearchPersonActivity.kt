@@ -1,29 +1,23 @@
-package com.example.roman.testproject.ui
+package com.example.roman.testproject.ui.search
 
 import android.app.AlertDialog
-import android.app.Dialog
-import android.app.PendingIntent.getActivity
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
+import android.view.View
 import android.widget.Toast
 import com.example.roman.testproject.R
 import com.example.roman.testproject.data.model.PersonInfo
 import com.example.roman.testproject.presentation.search_person.SearchPersonContract
-import com.example.roman.testproject.ui.adapter.PersonAdapter
+import com.example.roman.testproject.ui.search.adapter.PersonAdapter
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_search.*
 import javax.inject.Inject
 import android.widget.EditText
-import es.voghdev.pdfviewpager.library.asset.CopyAssetThreadImpl
-import es.voghdev.pdfviewpager.library.asset.CopyAsset
-import java.io.File
-import es.voghdev.pdfviewpager.library.PDFViewPager
-import kotlinx.android.synthetic.main.dialog_comment.*
-import kotlinx.android.synthetic.main.person_info_item.*
+import com.example.roman.testproject.ui.BaseActivity
+import com.example.roman.testproject.ui.Config
+import com.example.roman.testproject.ui.PdfReaderActivity
 
 
 class SearchPersonActivity : SearchPersonContract.View, BaseActivity() {
@@ -96,11 +90,11 @@ class SearchPersonActivity : SearchPersonContract.View, BaseActivity() {
     }
 
     override fun showLoading() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        progressBar.visibility = View.VISIBLE
     }
 
     override fun hideLoading() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        progressBar.visibility = View.INVISIBLE
     }
 
     override fun onDestroy() {

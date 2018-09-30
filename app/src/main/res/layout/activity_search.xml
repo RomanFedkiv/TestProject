@@ -6,7 +6,7 @@
     android:focusableInTouchMode="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.SearchPersonActivity">
+    tools:context=".ui.search.SearchPersonActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -72,6 +72,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
+        />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:visibility="invisible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         />
 
 </android.support.design.widget.CoordinatorLayout>

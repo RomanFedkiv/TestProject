@@ -21,7 +21,9 @@ class SearchPersonPresenter @Inject constructor(
     }
 
     override fun initSearch(query: String) {
+        view.showLoading()
         getPersonInfoUseCase.execute(query) {
+            view.hideLoading()
             when (it) {
                 is Success -> view.showPersonInfo(it.result)
                 is Error -> view.showError()

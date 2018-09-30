@@ -7,10 +7,11 @@ import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
 import com.example.roman.testproject.R
+import com.example.roman.testproject.ui.favourite.FavouritePersonActivity
+import com.example.roman.testproject.ui.search.SearchPersonActivity
 
 open abstract class BaseActivity : AppCompatActivity(), ConnectivityReceiver.ConnectivityReceiverListener, BottomNavigationView.OnNavigationItemSelectedListener {
 

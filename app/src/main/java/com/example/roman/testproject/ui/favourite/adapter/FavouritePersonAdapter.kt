@@ -1,4 +1,4 @@
-package com.example.roman.testproject.ui.adapter
+package com.example.roman.testproject.ui.favourite.adapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater

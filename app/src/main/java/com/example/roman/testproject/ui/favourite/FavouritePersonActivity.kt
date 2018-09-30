@@ -1,20 +1,19 @@
-package com.example.roman.testproject.ui
+package com.example.roman.testproject.ui.favourite
 
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.example.roman.testproject.R
 import com.example.roman.testproject.data.model.PersonInfo
 import com.example.roman.testproject.presentation.favourite_person.FavouritePersonContract
-import com.example.roman.testproject.presentation.search_person.SearchPersonContract
-import com.example.roman.testproject.ui.adapter.FavouritePersonAdapter
-import com.example.roman.testproject.ui.adapter.PersonAdapter
+import com.example.roman.testproject.ui.BaseActivity
+import com.example.roman.testproject.ui.Config
+import com.example.roman.testproject.ui.PdfReaderActivity
+import com.example.roman.testproject.ui.favourite.adapter.FavouritePersonAdapter
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_favourite_person.*
-import kotlinx.android.synthetic.main.dialog_comment.*
 import javax.inject.Inject
 
 class FavouritePersonActivity : BaseActivity(), FavouritePersonContract.View {
@@ -31,13 +30,12 @@ class FavouritePersonActivity : BaseActivity(), FavouritePersonContract.View {
 
     fun initView(){
         favourite_list.layoutManager = LinearLayoutManager(this)
-        favourite_list.adapter = FavouritePersonAdapter{ personInfo: PersonInfo, s: String ->
-            when (s)
-            {
+        favourite_list.adapter = FavouritePersonAdapter { personInfo: PersonInfo, s: String ->
+            when (s) {
                 Config.FAVOURITE_BUTTON_PRESSED -> presenter.deleteFromFavourite(personInfo.id!!)
                 Config.PDF_BUTTON_PRESSED -> {
                     val intent = Intent(this, PdfReaderActivity::class.java)
-                    intent.putExtra("key",personInfo.linkPDF)
+                    intent.putExtra("key", personInfo.linkPDF)
                     startActivity(intent)
                 }
                 Config.COMMENT -> presenter.changeComment(personInfo)

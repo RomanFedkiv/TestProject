@@ -1,11 +1,10 @@
-package com.example.roman.testproject.ui.adapter
+package com.example.roman.testproject.ui.search.adapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.example.roman.testproject.R
 import com.example.roman.testproject.data.model.PersonInfo
 import com.example.roman.testproject.ui.Config
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.person_info_item.view.*
 
 class PersonHolder(

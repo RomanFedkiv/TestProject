@@ -1,6 +1,6 @@
 package com.example.roman.testproject.di.modules
 
-import com.example.roman.testproject.ui.SearchPersonActivity
+import com.example.roman.testproject.ui.search.SearchPersonActivity
 import com.example.roman.testproject.di.scopes.PerActivity
 import com.example.roman.testproject.domain.interactor.AddToFavouriteUseCase
 import com.example.roman.testproject.domain.interactor.DeleteFromFavouriteUseCase
